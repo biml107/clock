@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghadi</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+
+      }
+      body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #091921;
+      }
+      .clock{
+          width: 350px;
+          height: 350px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #091921 url('clock.png');
+          background-size: cover;
+         border-radius: 50%;
+          border: 20px solid #091921d2;
+          box-shadow: inset 0px 0px 20px rgb(0, 0, 0,.4),
+                            0px 30px 40px rgb(0, 0, 0,.3),
+                            0px 0px 0px rgba(225,225,225,2);
+      }.clock::before{
+          content: "";
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background: #ffffff;
+          border: 2px solid #091921;
+          z-index:100000 ;
+          border-radius: 50%;
+      }
+      .hour,
+      .min,
+      .sec{
+          position: absolute;
+      }
+      .hour, .hr{
+          width: 160px;
+          height: 160px;
+
+      }
+      .min, .mn{
+          width: 190px;
+          height: 190px;
+          
+      }
+      .sec, .sc{
+          width: 230px;
+          height: 230px;
+          
+      }
+      .hr,.min,.sec{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           position: absolute;
+          border-radius: 50%;
+         
+      }
+      .hr::before{
+          content: '';
+          position: absolute;
+          top: 0;
+          width: 8px;
+          height: 80px;
+          background: #df1717;
+          z-index: 10;
+          border-radius: 6px 6px 0 0 ;
+      }
+      .mn::before{
+          content: '';
+          position: absolute;
+            left: 49%;
+            right: 49%;
+          width: 4px;
+          height: 90px;
+          background: #ffffff;
+          z-index: 11;
+          border-radius: 6px 6px 0 0 ;
+      }
+      .sc::before{
+        content: '';
+        position: absolute; 
+        left: 49%;
+         right: 49%;      
+         top: 2%;
+        width: 4px;
+        height: 130px;
+        background: #2d4fe7;
+        z-index: 12;
+        border-radius: 6px 6px 0 0 ;
+    }
+   
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+         <div class="mn" id="mn"></div>
+     </div>
+     <div class="sec">
+         <div class="sc" id="sc"></div>
+     </div>
+     </div>
+     <script type="text/javascript">
+          const deg =6;
+          const hr =document.querySelector("#hr");
+          const mn =document.querySelector("#mn");
+          const sc =document.querySelector("#sc");
+          setInterval(()=> {
+              let day =new Date();
+              let hh=day.getHours() * 30;
+              let mm = day.getMinutes()* deg;
+              let ss = day.getSeconds()* deg;
+              hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
+              mn.style.transform = `rotateZ(${mm}deg)`;
+              sc.style.transform = `rotateZ(${ss}deg)`;
+ 
+ 
+ 
+          })
+ 
+     </script>
+</body>
+</html>
